@@ -3,7 +3,8 @@ package co.earthme.fqbot.command
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.Event
 import net.mamoe.mirai.event.events.MessageEvent
-import java.lang.NullPointerException
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicReference
@@ -11,6 +12,7 @@ import kotlin.coroutines.startCoroutine
 
 class CommandParser {
     companion object{
+        private val logger : Logger = LogManager.getLogger()
         private val currListener : AtomicReference<Bot> = AtomicReference()
         private val processWorker = Executors.newCachedThreadPool()
 
@@ -36,11 +38,11 @@ class CommandParser {
 
         private fun fireProcess(event:MessageEvent){
             val commandInfo = PackagedCommandInfo(event.message)
-            try {
-                CommandList.search(commandInfo.getHead())?.process(commandInfo, event)
-            } catch (_: NullPointerException) {
-                //Do not process npe because when command parse failed.It will throw a NPE
+            if (commandInfo.getHead()==null){
+                return
             }
+            logger.info("Processing command:{}",commandInfo)
+            commandInfo.getHead()?.let { CommandList.search(it)?.process(commandInfo, event) }
         }
     }
 }

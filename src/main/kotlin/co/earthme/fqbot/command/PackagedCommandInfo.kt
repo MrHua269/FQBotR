@@ -44,8 +44,8 @@ class PackagedCommandInfo(chain: MessageChain) {
         return this.otherArgs
     }
 
-    fun getHead() : String {
-        return this.commandHead!!
+    fun getHead() : String?{
+        return this.commandHead
     }
 
     override fun toString(): String {
