@@ -1,4 +1,4 @@
-package co.earthme.fqbot.command
+package co.earthme.fqbot.callbacks
 
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext

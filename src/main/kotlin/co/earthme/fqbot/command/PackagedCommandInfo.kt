@@ -68,7 +68,7 @@ class PackagedCommandInfo(chain: MessageChain) {
                             args.size.coerceAtLeast(1)
                         )
                     }
-                    result[0][0] = commandHead
+                    result[0][0] = commandHead.substring(1)
                     System.arraycopy(args, 0, result[1], 0, args.size)
                     return result
                 }

@@ -3,18 +3,26 @@ package co.earthme.fqbot.manager
 import co.earthme.fqbot.bot.BotConfigEntry
 import co.earthme.fqbot.bot.BotEntry
 import co.earthme.fqbot.bot.impl.BotImpl
+import co.earthme.fqbot.callbacks.BotLoadCallback
 import co.earthme.fqbot.data.BotConfigEntryArray
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import net.mamoe.mirai.utils.BotConfiguration
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.io.File
 import java.nio.file.Files
 import java.util.*
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import kotlin.coroutines.startCoroutine
 import kotlin.system.exitProcess
 
 class BotManager {
     companion object{
+        private val paraLoadExecutor : ExecutorService = Executors.newCachedThreadPool()
         private val configArrayFile : File = File("bots.json")
         private val loadedBots : MutableList<BotEntry> = Collections.synchronizedList(ArrayList())
         private var currentConfigArray : BotConfigEntryArray? = null
@@ -50,23 +58,49 @@ class BotManager {
                 throw IllegalStateException("Config didn't init yet!")
             }
             logger.info("Init bots")
-            for (botConfigEntry : BotConfigEntry in currentConfigArray!!.getConfigEntries()){
-                logger.info("Loading bot {}",botConfigEntry.getQid())
-                try {
-                    val botEntry : BotEntry = BotImpl()
-
-                    val loginTask :suspend () -> Unit = {
-                        botEntry.runBot(botConfigEntry)
+            val paraLoad = ConfigManager.getReadConfig().paraLoad()
+            if (paraLoad){
+                val countDownLatch = CountDownLatch(currentConfigArray!!.getConfigEntries().size)
+                for (botConfigEntry in currentConfigArray!!.getConfigEntries()){
+                    paraLoadExecutor.execute {
+                        logger.info("Loading bot {}", botConfigEntry.getQid())
+                        val botEntry: BotEntry = BotImpl()
+                        val loginAction: suspend () -> Unit = {
+                            try {
+                                botEntry.runBot(botConfigEntry)
+                            } catch (e: Exception) {
+                                logger.error("Error in loading bot!")
+                            }
+                        }
+                        loginAction.startCoroutine(BotLoadCallback {
+                            try {
+                                if (botEntry.bot!!.isOnline) {
+                                    loadedBots.add(botEntry)
+                                }
+                            } finally {
+                                countDownLatch.countDown()
+                            }
+                        })
                     }
-
-                    loginTask.invoke()
-                    loadedBots.add(botEntry)
-                }catch (e : Exception) {
-                    logger.error("Error in loading bot!")
-                    e.printStackTrace()
+                }
+                withContext(Dispatchers.IO) {
+                    countDownLatch.await()
+                }
+            }else{
+                for (botConfigEntry in currentConfigArray!!.getConfigEntries()){
+                    logger.info("Loading bot {}",botConfigEntry.getQid())
+                    try {
+                        val botEntry : BotEntry = BotImpl()
+                        botEntry.runBot(botConfigEntry)
+                        loadedBots.add(botEntry)
+                    }catch (e : Exception) {
+                        logger.error("Error in loading bot!")
+                        e.printStackTrace()
+                    }
                 }
             }
             logger.info("Inited {} bots", loadedBots.size)
+            paraLoadExecutor.shutdownNow()
         }
     }
 }

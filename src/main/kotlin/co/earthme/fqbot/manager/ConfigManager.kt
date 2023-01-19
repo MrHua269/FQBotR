@@ -9,7 +9,7 @@ import java.nio.file.Files
 
 class ConfigManager {
     companion object{
-        private var configFile : ConfigFile = ConfigFile(114514,114514)
+        private var configFile : ConfigFile = ConfigFile(114514,114514,false)
         private val configFileEntry : File = File("config.json")
         private val logger : Logger = LogManager.getLogger()
         private val gson : Gson = Gson()

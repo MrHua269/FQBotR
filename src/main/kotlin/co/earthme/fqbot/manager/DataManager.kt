@@ -28,6 +28,11 @@ class DataManager {
             logger.info("Data file created!")
         }
 
+        fun save(){
+            val bytes : ByteArray = currentDataFile.toString().toByteArray()
+            Files.write(dataFile.toPath(),bytes)
+        }
+
         fun getReadData() : DataFile{
             return currentDataFile
         }

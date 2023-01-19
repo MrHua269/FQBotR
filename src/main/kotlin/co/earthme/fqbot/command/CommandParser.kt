@@ -1,5 +1,6 @@
 package co.earthme.fqbot.command
 
+import co.earthme.fqbot.callbacks.CommandProcessCallBack
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.Event
 import net.mamoe.mirai.event.events.MessageEvent

@@ -4,10 +4,15 @@ import com.google.gson.Gson
 
 class ConfigFile(
     private val listenGroup : Long,
-    private val masterQid : Long
+    private val masterQid : Long,
+    private val paraLoadBots : Boolean
 ){
     fun getListeningGroup() : Long{
         return this.listenGroup
+    }
+
+    fun paraLoad() : Boolean{
+        return this.paraLoadBots
     }
 
     fun getMasterQid() : Long{
