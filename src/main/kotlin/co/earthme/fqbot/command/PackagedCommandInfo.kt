@@ -3,8 +3,6 @@ package co.earthme.fqbot.command
 import net.mamoe.mirai.message.data.Message
 import net.mamoe.mirai.message.data.MessageChain
 import net.mamoe.mirai.message.data.PlainText
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 
 class PackagedCommandInfo(chain: MessageChain) {
@@ -20,7 +18,7 @@ class PackagedCommandInfo(chain: MessageChain) {
                 val deserialized = tryDeserializeHead(singleMessage.contentToString())
                 if (deserialized != null) {
                     this.commandHead = deserialized[0][0]
-                    for (singleArg : String? in deserialized[1]){
+                    for (singleArg: String? in deserialized[1]) {
                         singleArg?.let { this.args.add(it) }
                     }
                 } else {
@@ -44,7 +42,7 @@ class PackagedCommandInfo(chain: MessageChain) {
         return this.otherArgs
     }
 
-    fun getHead() : String?{
+    fun getHead(): String? {
         return this.commandHead
     }
 

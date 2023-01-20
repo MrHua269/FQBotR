@@ -30,8 +30,8 @@ abstract class BotEntry {
         doInitCacheFolder(configuration, configEntry)
         this.bot = BotFactory.INSTANCE.newBot(configEntry.getQid(), configEntry.getPassword(), configuration)
         this.bot!!.login()
-        this.bot!!.eventChannel.subscribeAlways<Event> {
-            event -> processEvent(event)
+        this.bot!!.eventChannel.subscribeAlways<Event> { event ->
+            processEvent(event)
         }
         this.connected.set(true)
     }

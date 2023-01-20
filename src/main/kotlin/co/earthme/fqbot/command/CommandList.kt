@@ -4,27 +4,27 @@ import co.earthme.fqbot.command.commandentry.CommandEntry
 import java.util.concurrent.ConcurrentHashMap
 
 class CommandList {
-    companion object{
-        private val registedCommands : MutableSet<CommandEntry> = ConcurrentHashMap.newKeySet()
+    companion object {
+        private val registedCommands: MutableSet<CommandEntry> = ConcurrentHashMap.newKeySet()
 
-        fun getAllCommands() : Set<CommandEntry>{
+        fun getAllCommands(): Set<CommandEntry> {
             return registedCommands
         }
 
-        fun search(name : String) : CommandEntry? {
-            for (command in registedCommands){
-                if (command.getName() == name){
+        fun search(name: String): CommandEntry? {
+            for (command in registedCommands) {
+                if (command.getName() == name) {
                     return command
                 }
             }
             return null
         }
 
-        fun removeCommand(commandEntry : CommandEntry){
+        fun removeCommand(commandEntry: CommandEntry) {
             registedCommands.remove(commandEntry)
         }
 
-        fun regCommand(commandEntry : CommandEntry){
+        fun regCommand(commandEntry: CommandEntry) {
             registedCommands.add(commandEntry)
         }
     }

@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager
 import java.net.URLDecoder
 
 class Woc2UrlUtil {
-    companion object{
+    companion object {
         fun getNewWocPicList(page: Int): List<String>? {
             try {
                 val json = Utils.getBytes("https://yingtall.com/wp-json/wp/v2/posts?page=$page")?.let { String(it) }

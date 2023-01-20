@@ -14,9 +14,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     implementation 'net.mamoe:mirai-core:2.12.1'
-    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
     implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.21'
 }
 
 test {
@@ -32,5 +32,5 @@ compileTestKotlin {
 }
 
 application {
-    mainClassName = 'MainKt'
+    mainClassName = 'co.earthme.fqbot.MainKt'
 }

@@ -14,11 +14,11 @@ class BotConfigEntry(
         return this.protocol
     }
 
-    fun getQid() : Long {
+    fun getQid(): Long {
         return this.qid
     }
 
-    fun getPassword() : String {
+    fun getPassword(): String {
         return this.password
     }
 

@@ -3,7 +3,7 @@ package co.earthme.fqbot.callbacks
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 
-class CommandProcessCallBack : Continuation<Unit> {
+class NullContinuation : Continuation<Unit> {
     override val context: CoroutineContext
         get() = kotlin.coroutines.EmptyCoroutineContext
 

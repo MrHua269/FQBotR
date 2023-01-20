@@ -8,25 +8,32 @@ import java.io.File
 import java.nio.file.Files
 
 class ConfigManager {
-    companion object{
-        private var configFile : ConfigFile = ConfigFile(114514,114514,false)
-        private val configFileEntry : File = File("config.json")
-        private val logger : Logger = LogManager.getLogger()
-        private val gson : Gson = Gson()
+    companion object {
+        private var configFile: ConfigFile = ConfigFile(
+            114514,
+            114514,
+            false,
+            false,
+            "114.5.1.4",
+            11451
+        )
+        private val configFileEntry: File = File("config.json")
+        private val logger: Logger = LogManager.getLogger()
+        private val gson: Gson = Gson()
 
-        fun initConfig(){
-            if (configFileEntry.exists()){
-                val readBytes : ByteArray = Files.readAllBytes(configFileEntry.toPath())
-                configFile = gson.fromJson(String(readBytes),ConfigFile::class.java)
+        fun initConfig() {
+            if (configFileEntry.exists()) {
+                val readBytes: ByteArray = Files.readAllBytes(configFileEntry.toPath())
+                configFile = gson.fromJson(String(readBytes), ConfigFile::class.java)
                 logger.info("Read config file!")
                 return
             }
             logger.info("Creating config file")
-            val bytes : ByteArray = configFile.toString().toByteArray()
-            Files.write(configFileEntry.toPath(),bytes)
+            val bytes: ByteArray = configFile.toString().toByteArray()
+            Files.write(configFileEntry.toPath(), bytes)
         }
 
-        fun getReadConfig() : ConfigFile{
+        fun getReadConfig(): ConfigFile {
             return configFile
         }
     }

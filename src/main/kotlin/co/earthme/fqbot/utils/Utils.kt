@@ -8,10 +8,13 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
+import java.net.Proxy
 import java.net.URL
 import java.util.*
 
 object Utils {
+    private val RANDOM = Random()
+
     @Throws(IOException::class)
     fun readInputStream(inputStream: InputStream): ByteArrayInputStream {
         val buffer = ByteArray('Ѐ'.code)
@@ -45,35 +48,56 @@ object Utils {
         return null
     }
 
-    fun getBytes(url1: String?): ByteArray? {
+    @Throws(IOException::class)
+    fun getBytes(url: String, proxy: Proxy): ByteArray? {
+        LogManager.getLogger().info("Downloading:{}", url)
+        val url1 = URL(url)
+        val connection = url1.openConnection(proxy) as HttpURLConnection
+        connection.setRequestProperty("User-Agent", randomUserAgent)
+        connection.readTimeout = 30000
+        connection.connectTimeout = 3000
+        connection.connect()
         try {
-            LogManager.getLogger().info("Downloading:{}", url1)
-            val url = URL(url1)
-            val connection = url.openConnection() as HttpURLConnection
-            connection.setRequestProperty("User-Agent", randomUserAgent)
-            connection.readTimeout = 30000
-            connection.connectTimeout = 3000
-            connection.connect()
-            try {
-                if (connection.responseCode == 200) {
-                    return readInputStreamToByte(connection.inputStream)
-                } else {
-                    LogManager.getLogger().error(
-                        "Response code:{} Response:{}", connection.responseCode,String(
-                            readInputStreamToByte(connection.inputStream)
-                        )
+            if (connection.responseCode == 200) {
+                return readInputStreamToByte(connection.inputStream)
+            } else {
+                LogManager.getLogger().error(
+                    "Response code:{} Response:{}", connection.responseCode, String(
+                        readInputStreamToByte(connection.inputStream)
                     )
-                }
-            } finally {
-                connection.disconnect()
+                )
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } finally {
+            connection.disconnect()
         }
         return null
     }
 
-    private val RANDOM = Random()
+    @Throws(IOException::class)
+    fun getBytes(url1: String?): ByteArray? {
+        LogManager.getLogger().info("Downloading:{}", url1)
+        val url = URL(url1)
+        val connection = url.openConnection() as HttpURLConnection
+        connection.setRequestProperty("User-Agent", randomUserAgent)
+        connection.readTimeout = 30000
+        connection.connectTimeout = 3000
+        connection.connect()
+        try {
+            if (connection.responseCode == 200) {
+                return readInputStreamToByte(connection.inputStream)
+            } else {
+                LogManager.getLogger().error(
+                    "Response code:{} Response:{}", connection.responseCode, String(
+                        readInputStreamToByte(connection.inputStream)
+                    )
+                )
+            }
+        } finally {
+            connection.disconnect()
+        }
+        return null
+    }
+
     private val randomUserAgent: String
         get() {
             synchronized(this) {
