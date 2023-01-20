@@ -4,34 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1995dc05-20d7-49c9-9a01-be66379999f6" name="变更" comment="Some fixes and updates">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/RPICCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/PixivRandomPictureResponse.kt" afterDir="false" />
+    <list default="true" id="1995dc05-20d7-49c9-9a01-be66379999f6" name="变更" comment="Clean codes and add some commands">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotConfigEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotConfigEntry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotEntry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/callbacks/BotLoadCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/callbacks/PackagedContinuation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/callbacks/CommandProcessCallBack.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/callbacks/NullContinuation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandParser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/PackagedCommandInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/PackagedCommandInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/CommandEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/CommandEntry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/RPIC3Command.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/RPIC3Command.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/BotConfigEntryArray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/BotConfigEntryArray.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/ConfigFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/ConfigFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/DataFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/data/DataFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/BotManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/BotManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/ConfigManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/ConfigManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/DataManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/DataManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/Utils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/Woc2UrlUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/Woc2UrlUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/PixivRandomPictureResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/PixivRandomPictureResponse.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,13 +36,12 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="FQBotR" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="FQBotR" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="运行配置" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -132,13 +108,40 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="FQBotR [runnableJar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runnableJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.earthme.fqbot.MainKt" />
       <module name="FQBotR.main" />
+      <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.FQBotR [runnableJar]" />
+      <item itemvalue="Gradle.FQBotR [build]" />
+      <item itemvalue="Kotlin.MainKt" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.MainKt" />
@@ -183,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674137870444</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Clean codes and add some commands">
+      <created>1674180459390</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674180459390</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -191,6 +201,7 @@
     <MESSAGE value="Add the lost files" />
     <MESSAGE value="Some fixes and change miraicore to 2.9.0" />
     <MESSAGE value="Some fixes and updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some fixes and updates" />
+    <MESSAGE value="Clean codes and add some commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean codes and add some commands" />
   </component>
 </project>

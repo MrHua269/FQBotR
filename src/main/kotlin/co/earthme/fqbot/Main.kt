@@ -13,9 +13,11 @@ suspend fun main() {
     DataManager.initOrRead()
     BotManager.readConfigArray()
     BotManager.initAllBot()
+    //Add shutdown hook
     Runtime.getRuntime().addShutdownHook(Thread {
         CommandParser.getProcessWorker().shutdownNow()
     })
+    //Register commands
     CommandList.regCommand(RPIC3Command())
     CommandList.regCommand(RPICCommand())
 }

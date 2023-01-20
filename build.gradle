@@ -1,26 +1,36 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
     id 'application'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'co.earthme'
+version = '1.0'
+archivesBaseName = 'fqbot-shadowed'
 
 repositories {
     mavenCentral()
 }
 
+shadowJar {
+    manifest {
+        attributes(
+                'Main-Class': 'co.earthme.fqbot.MainKt'
+        )
+    }
+    exclude 'META-INF/*.RSA','META-INF/*.SF','META-INF/*.DSA'
+    exclude 'META-INF/NOTICE','META-INF/NOTICE.txt'
+    exclude 'META-INF/LICENSE','META-INF/LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+}
+
 dependencies {
-    implementation 'com.google.code.gson:gson:2.10.1'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'net.mamoe:mirai-core:2.12.1'
     implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
     implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.21'
-}
-
-test {
-    useJUnitPlatform()
 }
 
 compileKotlin {

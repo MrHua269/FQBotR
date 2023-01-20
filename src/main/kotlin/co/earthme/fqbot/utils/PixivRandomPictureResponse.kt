@@ -49,7 +49,11 @@ class PixivRandomPictureResponse {
             connection.readTimeout = 3000
             connection.connect()
             if (connection.responseCode == 200) {
-                return Utils.readInputStreamToByte(connection.inputStream)
+                try {
+                    return Utils.readInputStreamToByte(connection.inputStream)
+                }finally {
+                    connection.disconnect()
+                }
             }
             throw IOException("Unmatched response code:" + connection.responseCode)
         }
