@@ -73,6 +73,7 @@ class BotManager {
                             try {
                                 botEntry.runBot(botConfigEntry)
                             } catch (e: Exception) {
+                                e.printStackTrace()
                                 logger.error("Error in loading bot!")
                             }
                         }

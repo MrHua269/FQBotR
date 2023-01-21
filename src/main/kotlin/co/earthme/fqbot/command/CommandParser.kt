@@ -3,6 +3,7 @@ package co.earthme.fqbot.command
 import co.earthme.fqbot.callbacks.NullContinuation
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.Event
+import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.event.events.MessageEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -23,10 +24,19 @@ class CommandParser {
 
         fun processEvent(event: Event) {
             if (event is MessageEvent) {
-                if (currListener.get() == null || !currListener.get().isOnline) {
-                    currListener.set(event.bot)
-                }
-                if (currListener.get().equals(event.bot)) {
+                if (event is GroupMessageEvent){
+                    if (currListener.get() == null || !currListener.get().isOnline) {
+                        currListener.set(event.bot)
+                    }
+                    if (currListener.get().equals(event.bot)) {
+                        processWorker.execute {
+                            val processTask: suspend () -> Unit = {
+                                fireProcess(event)
+                            }
+                            processTask.startCoroutine(NullContinuation())
+                        }
+                    }
+                }else{
                     processWorker.execute {
                         val processTask: suspend () -> Unit = {
                             fireProcess(event)

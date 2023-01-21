@@ -26,11 +26,11 @@ shadowJar {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'net.mamoe:mirai-core:2.12.1'
+    implementation 'net.mamoe:mirai-core:2.13.2'
     implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
     implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.21'
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 compileKotlin {
