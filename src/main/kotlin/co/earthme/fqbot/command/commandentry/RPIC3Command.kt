@@ -81,9 +81,9 @@ class RPIC3Command : CommandEntry {
                         val bytes: ByteArray? = if (ConfigManager.getReadConfig().enableProxy()) {
                             val proxy = ConfigManager.getReadConfig().getReadProxy()
                             proxy?.let {
-                                val linkHashBeenPolled = this.lastWocUrls.poll();
-                                linkHashBeenPolled?.let {
-                                    Utils.getBytes(linkHashBeenPolled,proxy)
+                                val linkHasBeenPolled = this.lastWocUrls.poll()
+                                linkHasBeenPolled?.let {
+                                    Utils.getBytes(linkHasBeenPolled,proxy)
                                 }
                             }
                         } else {
