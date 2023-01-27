@@ -5,6 +5,7 @@ import co.earthme.fqbot.bot.BotEntry
 import co.earthme.fqbot.bot.impl.BotImpl
 import co.earthme.fqbot.callbacks.PackagedContinuation
 import co.earthme.fqbot.data.BotConfigEntryArray
+import co.earthme.fqbot.multibot.MultiBotSender
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -17,6 +18,7 @@ import java.util.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.collections.ArrayList
 import kotlin.coroutines.startCoroutine
 import kotlin.system.exitProcess
 
@@ -26,8 +28,26 @@ class BotManager {
         private val configArrayFile: File = File("bots.json")
         private val loadedBots: MutableList<BotEntry> = Collections.synchronizedList(ArrayList())
         private var currentConfigArray: BotConfigEntryArray? = null
+        private val multiBotSender : MultiBotSender = MultiBotSender()
         private val gson: Gson = Gson()
         private val logger: Logger = LogManager.getLogger()
+
+        fun getInited(): List<BotEntry> {
+            return ArrayList(loadedBots)
+        }
+
+        fun getMultiSender(): MultiBotSender{
+            return multiBotSender
+        }
+
+        fun shutdown(){
+            multiBotSender.shutdown()
+            for (bot in loadedBots){
+                bot.bot?.close()
+            }
+            loadedBots.clear()
+            paraLoadExecutor.shutdownNow()
+        }
 
         fun readConfigArray() {
             if (configArrayFile.exists()) {
@@ -104,8 +124,8 @@ class BotManager {
                     }
                 }
             }
+            multiBotSender.doInit(loadedBots)
             logger.info("Inited {} bots", loadedBots.size)
-            paraLoadExecutor.shutdownNow()
         }
     }
 }

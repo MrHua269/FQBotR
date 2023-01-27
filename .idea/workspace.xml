@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1995dc05-20d7-49c9-9a01-be66379999f6" name="变更" comment="Clean codes and add some commands">
+    <list default="true" id="1995dc05-20d7-49c9-9a01-be66379999f6" name="变更" comment="Fix some type error and remove a ;">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/StatsCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/eventsystem/EventHub.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/eventsystem/EventListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/multibot/MultiBotSender.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/PixivRandomPictureResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/utils/PixivRandomPictureResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/BotEntry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/impl/BotImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/bot/impl/BotImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/CommandParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/RPIC3Command.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/command/commandentry/RPIC3Command.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/BotManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/earthme/fqbot/manager/BotManager.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +60,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Interface" />
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -75,7 +82,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/KeYi-MT&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -193,8 +201,47 @@
       <option name="project" value="LOCAL" />
       <updated>1674180459390</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix when pixiv downloader downloaded the picture.The connection won't be closed">
+      <created>1674182563801</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674182563801</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rewrite js command loader and bump mirai core to 2.13.2 and add shadow plugin to build">
+      <created>1674267821607</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674267821608</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix thread safe issue in RPIC3Command">
+      <created>1674273359585</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674273359586</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix some type error and remove a ;">
+      <created>1674273414917</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674273414917</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -202,6 +249,10 @@
     <MESSAGE value="Some fixes and change miraicore to 2.9.0" />
     <MESSAGE value="Some fixes and updates" />
     <MESSAGE value="Clean codes and add some commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean codes and add some commands" />
+    <MESSAGE value="Fix when pixiv downloader downloaded the picture.The connection won't be closed.And change build settings" />
+    <MESSAGE value="Rewrite js command loader and bump mirai core to 2.13.2 and add shadow plugin to build" />
+    <MESSAGE value="Fix thread safe issue in RPIC3Command" />
+    <MESSAGE value="Fix some type error and remove a ;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix some type error and remove a ;" />
   </component>
 </project>

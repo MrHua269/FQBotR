@@ -1,5 +1,6 @@
 package co.earthme.fqbot.command.commandentry
 
+import co.earthme.fqbot.bot.impl.BotImpl
 import co.earthme.fqbot.command.CommandParser
 import co.earthme.fqbot.command.PackagedCommandInfo
 import co.earthme.fqbot.manager.ConfigManager
@@ -76,7 +77,7 @@ class RPIC3Command : CommandEntry {
                     break
                 }
                 taskCounter.getAndIncrement()
-                CommandParser.getProcessWorker().execute {
+                BotImpl.getSystemWorker().execute {
                     try {
                         val bytes: ByteArray? = if (ConfigManager.getReadConfig().enableProxy()) {
                             val proxy = ConfigManager.getReadConfig().getReadProxy()

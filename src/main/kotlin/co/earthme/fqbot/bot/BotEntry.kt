@@ -11,9 +11,7 @@ import java.io.File
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class BotEntry {
-    @Volatile
     var bot: Bot? = null
-        private set
     private var configEntry: BotConfigEntry? = null
     private val connected = AtomicBoolean(false)
 
@@ -48,7 +46,7 @@ abstract class BotEntry {
         configuration.cacheDir = folder
     }
 
-    abstract fun processEvent(event: Event?)
+    abstract suspend fun processEvent(event: Event?)
 
     fun isConnected(): Boolean {
         return this.connected.get()
